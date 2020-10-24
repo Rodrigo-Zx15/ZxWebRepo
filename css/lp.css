@@ -1,0 +1,104 @@
+/*p{
+	color:red;
+}*/
+span img{
+	width:3rem;
+	height: 2rem;
+}
+body{
+	background: linear-gradient(180deg, rgba(157, 255, 81, 0.54) 0%, rgba(69, 207, 47, 0.54) 100%);
+} 
+.cor {
+	background: linear-gradient(180deg, rgba(157, 255, 81, 0.54) 0%, rgba(69, 207, 47, 0.54) 100%);
+	font-family: 'Roboto Condensed', sans-serif;
+	
+	margin-top: 3.5rem;
+	
+}
+h1{
+	text-align: center;
+}
+
+.lead{
+	text-align: center;
+	font-style: italic;
+	font-weight: 400;
+}
+
+#email{
+	width: 50%;
+}
+/* #pricing{
+	display: grid;
+	grid-template-columns: 2fr;
+} */
+.margin{
+	margin-bottom: 35px;
+}
+#features{
+	margin-top: 2rem;
+	padding-top: 1.5rem;
+	display: flex;
+	border: 2px dashed yellowgreen;
+	width:50vw;
+	margin-left: 25%;
+	color: #FF7448;
+	
+
+}
+.desci{
+	padding-top: 10px;
+ 	float: right;
+ 	color: #55c6a1;
+}
+h3{
+	text-align: center;
+	font-size: smaller;
+	font-weight: bold;
+}
+.jumbotron{
+	background: #81CCB8;
+	border: 1px solid #9F9F9F; 
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	border-radius: 5px;
+	margin-bottom: 1rem;
+	border-top-width: 1.3px;
+	border-bottom-width: 1.3px;
+	margin-left: 15%;
+	border-right-width: 0px;
+	margin-top: 4.5rem;
+	margin-right: 15%;
+	padding-bottom: 1rem;
+	padding-top: 1rem;
+	color: #ffffff;
+	font-weight: bolder;
+}
+.display-4{
+	font-weight: 700;
+}
+.footer{
+	margin-top: 10px;
+	width: 100%;
+	margin-left: auto;
+	margin-right:auto;
+	display: flex;
+	justify-content: flex-start;
+	/* text-align: ; */
+	
+}
+
+.card{
+	margin-top: 20px;
+}
+nav a{
+	font-weight: 700;
+}
+h1 span img{
+	width:15rem;
+	height:10rem;
+}
+
+.col-lg-3{
+	display:flex;
+	/* flex-grow: inherit; */
+}
