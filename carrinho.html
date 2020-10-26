@@ -16,7 +16,7 @@
 <!-- Navbar começa -->
 <header id="header">
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-  <a class="navbar-brand" href="./LandingPage.html"><span><img src="./icons/001-pizza.svg" alt="logo da marca"></span>
+  <a class="navbar-brand" href="./index.html"><span><img src="./icons/001-pizza.svg" alt="logo da marca"></span>
 AnhembiEats</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -61,7 +61,7 @@ nao faço ideia de como fazer o calculo de preço dinamicamente -->
 
 <section id="tabela de compras">
 	<div class="container">
-		<table class="table rounded border border-dark">
+		<table class="table rounded border border-dark" id="carrinho-tabela">
             <thead>
               <tr>
                 <th scope="col">Quant.</th>
@@ -73,7 +73,7 @@ nao faço ideia de como fazer o calculo de preço dinamicamente -->
             <tbody>
               <tr>
                 <td>
-                    <input type="number" min="1" max="9" default="1">
+                    <input type="number" min="1" max="9" value="1">
                 </td>
                 <td>Lanche Top</td>
                 <td>900</td>
@@ -81,15 +81,15 @@ nao faço ideia de como fazer o calculo de preço dinamicamente -->
               </tr>
               <tr>
                 <td>
-                    <input type="number" min="1" max="9" default="1">
+                    <input type="number" min="1" max="9" value="1">
                 </td>
                 <td>Subscribe to Pewdiepie</td>
-                <td>694,20</td>
+                <td>694.20</td>
                 
               </tr>
               <tr>
                 <td>
-                    <input type="number" min="1" max="9" default="1">
+                    <input type="number" min="1" max="9" value="1">
                 </td>
                 <td>Lanche Bottom</td>
                 <td>901</td>
@@ -98,7 +98,7 @@ nao faço ideia de como fazer o calculo de preço dinamicamente -->
               <tr>
                   <td></td>
                   <th scope="row">Total:</th>
-                  <td>9999</td>
+                  <td id="tabela-total"></td>
               </tr>
             </tbody>
           </table>
@@ -149,7 +149,7 @@ nao faço ideia de como fazer o calculo de preço dinamicamente -->
 </ul>
 </nav>
 </footer>
-
+<script src="./scripts/carrinho.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
