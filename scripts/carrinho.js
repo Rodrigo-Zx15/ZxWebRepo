@@ -39,7 +39,7 @@ function carrinhoHandler(){
     });
     console.log(total);
     //total.innerHTML = soma;
-    document.querySelector('#tabela-total').innerHTML = total;
+    carrinhoTabela.innerHTML = total;
 }
 
 //event listener
