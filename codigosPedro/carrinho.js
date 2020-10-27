@@ -9,7 +9,7 @@ function cartTableHandler() {
         const price = Number(el.querySelector('.cart-element-price').innerText);
         totalPrice += price * input;    
     });
-    console.log(totalPrice);
+    document.querySelector('#cart-total').innerHTML = totalPrice;
 }
 cartTable.addEventListener('change', cartTableHandler);
 
