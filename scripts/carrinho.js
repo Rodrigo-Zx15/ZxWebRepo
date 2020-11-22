@@ -1,34 +1,15 @@
 //OBS:. Créditos ao meu amigo Pedro que me ajudou a melhorar
-//esse código. Só traduzi pra PT-BR, mas irei commitar a versão dele
-//no monorepo
 
-//abaixo, o meu jeito de fazer o total dinâmico (excluí o meu listener),
-
-// selecionando todos os inputs da tabela
-const tabQuant = document.querySelectorAll('.carrinho-item-qnt');
-
-//selecionando todos os preços da tabela
-const tabValores = document.querySelectorAll('.carrinho-item-preco');
-
-var i = 0;
-let totalR = 0;
-
-//iterando para extrair os valores
-for(i = 0;i < tabQuant.length; i++){
-    //soma = soma + (tabQuant[x] * tabValores[x]);
-    let val = parseFloat(tabValores[i]['textContent']);
-    let qnt = parseInt(tabQuant[i]['value']);
-    totalR = totalR + (qnt*val);
-}
-document.querySelector('#tabela-total').innerHTML = totalR;
 
 //----------------------//
 //aqui é o jeito do Pedro para fazer o Total dinâmico
-const carrinhoTabela = document.querySelector('#carrinho-tabela')
-const linhasTabela = carrinhoTabela.querySelectorAll('tbody tr:not(:last-child)');
+let carrinhoTabela = document.querySelector('#carrinho-tabela')
+let linhasTabela = carrinhoTabela.querySelectorAll('tbody tr:not(:last-child)');
 let total;
 //iterando para extrair os valores
 function carrinhoHandler(){
+    carrinhoTabela = document.querySelector('#carrinho-tabela');
+    linhasTabela = carrinhoTabela.querySelectorAll('tbody tr:not(:last-child)');
     total = 0;
     linhasTabela.forEach((el) => {
         // selecionando todos os inputs da tabela
@@ -46,7 +27,17 @@ function carrinhoHandler(){
 carrinhoTabela.addEventListener('change', carrinhoHandler);
 
 
+//funcao pra remover items
 
+function deletarItem(event){
+    console.log(event.currentTarget);
+    const span = event.currentTarget;
+    //??????????? um dia vai ser útil? talvez?
+    const campos = document.querySelectorAll(".crt-item");
+    //remove o pai...do pai, o que no caso é a tr inteira
+    span.parentNode.parentNode.remove();
+    carrinhoHandler();
+}
 
 
 
