@@ -110,5 +110,8 @@ h1 span img{
 	display:flex;
 	/* flex-grow: inherit; */
 }
+.col-sm-12{
+	justify-content: center;
+}
 /* não sei porque eu to comentando um código que só eu vou mexer, já
 que não tenho grupo */

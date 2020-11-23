@@ -95,12 +95,11 @@
 
       <!-- bom, aqui é um carrinho de compras em forma de tabela.
 o preço está sendo calculado dinamicamente e falta add a funcao de remover items -->
-      <form>
-        <section id="tabela de compras">
+      <form id="carrinho-tabela">
           <div class="container">
             <table
               class="table rounded border border-dark"
-              id="carrinho-tabela"
+              
             >
               <thead>
                 <tr>
@@ -110,69 +109,16 @@ o preço está sendo calculado dinamicamente e falta add a funcao de remover ite
                 </tr>
               </thead>
               <tbody>
-                <tr class="crt-item">
-                  <td>
-                    <input
-                      type="number"
-                      min="1"
-                      max="9"
-                      value="1"
-                      class="carrinho-item-qnt"
-                    />
-                  </td>
-                  <td>Lanche Top</td>
-                  <td class="carrinho-item-preco">900</td>
-                  <td>
-                    <span onclick="deletarItem(event)"
-                      ><img src="./icons/002-red-x.svg" alt="deletar item"
-                    /></span>
-                  </td>
-                </tr>
-                <tr class="crt-item">
-                  <td>
-                    <input
-                      type="number"
-                      min="1"
-                      max="9"
-                      value="1"
-                      class="carrinho-item-qnt"
-                    />
-                  </td>
-                  <td>Subscribe to Pewdiepie</td>
-                  <td class="carrinho-item-preco">694.20</td>
-                  <td>
-                    <span onclick="deletarItem(event)"
-                      ><img src="./icons/002-red-x.svg" alt="deletar item"
-                    /></span>
-                  </td>
-                </tr>
-                <tr class="crt-item">
-                  <td>
-                    <input
-                      type="number"
-                      min="1"
-                      max="9"
-                      value="1"
-                      class="carrinho-item-qnt"
-                    />
-                  </td>
-                  <td>Lanche Bottom</td>
-                  <td class="carrinho-item-preco">901</td>
-                  <td>
-                    <span onclick="deletarItem(event)"
-                      ><img src="./icons/002-red-x.svg" alt="deletar item"
-                    /></span>
-                  </td>
-                </tr>
-                <tr>
-                  <td></td>
+                
+                <tr id="crt-total">
+                  <td ></td>
                   <th scope="row">Total:</th>
                   <td id="tabela-total"></td>
                 </tr>
               </tbody>
             </table>
           </div>
-        </section>
+        
 
         <hr class="my-4" />
         <!-- select baixo + botão -->
