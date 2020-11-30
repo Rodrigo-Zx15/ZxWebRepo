@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
+  <?php 
+      include '../backend/modelo/cliente.php';
+      session_start();
+      if(empty($_SESSION)){
+        echo "<script>alert('FAÇA LOGIN!');window.location = '../login.php';</script>";
+      }
+	  ?>
     <meta charset="utf-8" />
     <title>AnhembiEats | Carrinho</title>
     <link
@@ -13,14 +20,15 @@
       integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" type="text/css" href="./css/lp.css" />
-    <link rel="stylesheet" href="./css/carrinho.css" />
+    <link rel="stylesheet" type="text/css" href="../frontend/css/lp.css" />
+    <link rel="stylesheet" href="../frontend/css/carrinho.css" />
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
       integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
       crossorigin="anonymous"
     />
+
   </head>
   <body>
     <!-- precisei desse div pra setar a cor no body sem 
@@ -29,10 +37,11 @@
       <!-- Navbar começa -->
       <header id="header">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-          <a class="navbar-brand" href="./index.html"
-            ><span><img src="./icons/001-pizza.svg" alt="logo da marca"/></span>
+          <a class="navbar-brand" href="./home.php"
+            ><span><img src="../frontend/icons/001-pizza.svg" alt="logo da marca"/></span>
             AnhembiEats</a
           >
+  
           <button
             class="navbar-toggler"
             type="button"
@@ -50,30 +59,30 @@
           >
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link active" href="./carrinho.html">
+                <a class="nav-link active" href="./carrinho.php">
                   <span
                     ><img
-                      src="./icons/003-carrinho.svg"
+                      src="../frontend/icons/003-carrinho.svg"
                       alt="Carrinho de compras"
                   /></span>
                   Carrinho
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="./historico.html">
+                <a class="nav-link" href="./historico.php">
                   <span
-                    ><img src="./icons/001-pizza.svg" alt="Histórico de compras"
+                    ><img src="../frontend/icons/001-pizza.svg" alt="Histórico de compras"
                   /></span>
                   Histórico</a
                 >
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="https://sou.anhembi.br/dashboard">
-                  <span
-                    ><img src="./icons/001-anhembi-logo.svg" alt="logo da marca"
-                  /></span>
-                  Sair</a
-                >
+                <form action="../backend/controle/controlador-cd.php" method="POST">
+                    <a class="nav-link">
+                      <span><img src="../frontend/icons/001-anhembi-logo.svg" alt="logo da marca"></span>
+                      <button type="submit" name="btn-sair">Sair</button>
+                    </a>
+                 </form>
               </li>
             </ul>
           </div>
@@ -84,7 +93,7 @@
       <!-- jumbo starta -->
       <div class="jumbotron">
         <h1 class="display-4">
-          <span><img src="./icons/003-carrinho.svg" alt="carrinho"/></span> Seu
+          <span><img src="../frontend/icons/003-carrinho.svg" alt="carrinho"/></span> Seu
           carrinho de compras
         </h1>
         <p class="lead">Confira aqui seus pedidos</p>
@@ -94,8 +103,8 @@
       <!-- jumbo acabou :D -->
 
       <!-- bom, aqui é um carrinho de compras em forma de tabela.
-o preço está sendo calculado dinamicamente e falta add a funcao de remover items -->
-      <form id="carrinho-tabela">
+o preço está sendo calculado dinamicamente -->
+      <form id="carrinho-tabela" action="../backend/controle/controlador-cd.php" method="POST" multiple="multiple">
           <div class="container">
             <table
               class="table rounded border border-dark"
@@ -109,7 +118,7 @@ o preço está sendo calculado dinamicamente e falta add a funcao de remover ite
                 </tr>
               </thead>
               <tbody>
-                
+                <!-- agora a tabela tá sendo formada dinamicamente -->
                 <tr id="crt-total">
                   <td ></td>
                   <th scope="row">Total:</th>
@@ -121,28 +130,28 @@ o preço está sendo calculado dinamicamente e falta add a funcao de remover ite
         
 
         <hr class="my-4" />
-        <!-- select baixo + botão -->
+        <!-- select abaixo + botão -->
         <div class="container">
           <div class="row justify-content-center">
             <div class="col-12">
               <label for="pagamento">Escolha seu método de pagamento:</label>
               <select class="form-control" name="pagamento">
-                <option selected>
+                <option selected value="CC">
                   <img
-                    src="./icons/002-cartao-de-credito.svg"
+                    src="../frontend/icons/002-cartao-de-credito.svg"
                     alt="cartão de crédito"
                   />
                   Cartão de Crédito</option
                 >
-                <option>
+                <option value="CD">
                   <img
-                    src="./icons/001-cartao-de-credito.svg"
+                    src="../frontend/icons/001-cartao-de-credito.svg"
                     alt="cartão de débitos"
                   />
                   Cartão de Débito</option
                 >
-                <option>
-                  <img src="./icons/003-paypal.svg" alt="paypal" />
+                <option value="PP">
+                  <img src="../frontend/icons/003-paypal.svg" alt="paypal" />
                   Paypal</option
                 >
               </select>
@@ -151,7 +160,7 @@ o preço está sendo calculado dinamicamente e falta add a funcao de remover ite
 
           <div class="row justify-content-center">
             <div class="col-12">
-              <button type="button" class="btn btn-info">
+              <button type="submit" class="btn btn-info" name="btn-comprar">
                 Confirmar compra
               </button>
             </div>
@@ -185,7 +194,7 @@ o preço está sendo calculado dinamicamente e falta add a funcao de remover ite
           </ul>
         </nav>
       </footer>
-      <script src="./scripts/carrinho.js"></script>
+      <script src="../frontend/scripts/carrinho.js"></script>
       <script
         src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

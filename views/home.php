@@ -1,12 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<?php 
+		require '../backend/modelo/cliente.php';
+		session_start();
+		
+		
+		if(empty($_SESSION)){
+			echo "<script>alert('FAÇA LOGIN!');window.location = '../login.php';</script>";
+		}
+	?>
 	<meta charset="utf-8">
 	<title>AnhembiEats | Bem-vindo!</title>
 	<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"> 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="./css/lp.css">
+	<link rel="stylesheet" type="text/css" href="../frontend/css/lp.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+	
 </head>
 <body>
 	<!-- precisei desse div pra setar a cor no body sem 
@@ -15,7 +26,7 @@
 <!-- Navbar começa -->
 <header id="header">
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-  <a class="navbar-brand" href="./index.html"><span><img src="./icons/001-pizza.svg" alt="logo da marca"></span>
+  <a class="navbar-brand" href="./home.php"><span><img src="../frontend/icons/001-pizza.svg" alt="logo da marca"></span>
 AnhembiEats</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -23,19 +34,22 @@ AnhembiEats</a>
   <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" href="./carrinho.html">
-			<span><img src="./icons/003-carrinho.svg" alt="Carrinho de compras"></span>
+        <a class="nav-link" href="./carrinho.php">
+			<span><img src="../frontend/icons/003-carrinho.svg" alt="Carrinho de compras"></span>
 			Carrinho </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="./historico.html">
-			<span><img src="./icons/001-pizza.svg" alt="Histórico de compras"></span>
+        <a class="nav-link" href="./historico.php">
+			<span><img src="../frontend/icons/001-pizza.svg" alt="Histórico de compras"></span>
 			Histórico</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="https://sou.anhembi.br/dashboard">
-			<span><img src="./icons/001-anhembi-logo.svg" alt="logo da marca"></span>
-			Sair</a>
+		<form action="../backend/controle/controlador-cd.php" method="POST">
+        	<a class="nav-link" >
+				<span><img src="../frontend/icons/001-anhembi-logo.svg" alt="logo da marca"></span>
+				<button type="submit" name="btn-sair">Sair</button>	
+			</a>
+		</form>
       </li>
 
     </ul>
@@ -46,10 +60,19 @@ AnhembiEats</a>
 
 <!-- jumbo starta -->
 <div class="jumbotron">
-	<h1 class="display-4"> <span><img src="./icons/001-pizza.svg" alt="logomarca"></span> Bem-vindo ao AnhembiEats!</h1>
+	
+	<h1 class="display-4"> <span><img src="../frontend/icons/001-pizza.svg" alt="logomarca"></span> 
+	<?php
+		
+		$cliente = $_SESSION['cliente'];
+		$nomeCliente = $cliente->getNome();
+		
+		echo "Bem vindo, $nomeCliente!"
+	?>	
+	</h1>
 	<p class="lead">Feito de alunos para alunos, esse site ainda é um work in progress.</p>
 	<hr class="my-4">
-	
+
 </div>
 
 <!-- jumbo acabou :D -->
@@ -61,7 +84,7 @@ preferi colocar uma coisa assim na landing page do que entupir de card com image
 <section id="features">
 	<div class="container">
 		<div class="row margin">
-			<div class="col-md-3"><img src="./icons/001-cartao-de-credito.svg" alt="tipos de pagamento"></div>
+			<div class="col-md-3"><img src="../frontend/icons/001-cartao-de-credito.svg" alt="tipos de pagamento"></div>
 			<div class="col-md-9">
 				<h4>Aceitamos todos os cartões!*</h4>
 				<p>Também aceitamos pagamentos via PayPal</p>
@@ -69,7 +92,7 @@ preferi colocar uma coisa assim na landing page do que entupir de card com image
 		</div>
 		
 		<div class="row margin">
-			<div class="col-md-3"> <img src="./icons/001-smartphone.svg" alt="funcionalidades">
+			<div class="col-md-3"> <img src="../frontend/icons/001-smartphone.svg" alt="funcionalidades">
 </div>
 			<div class="col-md-9">
 				<h4>Fácil de usar!</h4>
@@ -80,7 +103,7 @@ preferi colocar uma coisa assim na landing page do que entupir de card com image
 
 		<div class="row margin">
 			<div class="col-md-3">
-				<img src="./icons/001-desconto.svg" alt="descontos">
+				<img src="../frontend/icons/001-desconto.svg" alt="descontos">
 			</div>
 			<div class="col-md-9">
 				<h4>Opa, descontos!</h4>
@@ -97,53 +120,33 @@ preferi colocar uma coisa assim na landing page do que entupir de card com image
 	<div class="container justify-content-center">
 		<div class="row">
 		
-		<div class="col-lg-3 col-sm-12">
-				<div class="card text-center" style="width: 18rem;">
-  					<img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=902&q=80" class="card-img-top" alt="lanchoso">
-  					<h5 class="card-header">Lanche Top</h5>
-  					<div class="card-body">
-    					<h2> R$<span class="hm-item-preco">900.30</span></h2>
-    					<p class="card-text">(Subway)</p>
-    					<button class="btn btn-success" onclick="salvarDados(event);">COMPRAR</button>
-  					</div>
-				</div>
-		</div>
-
-		<div class="col-lg-3 col-sm-12">
-				<div class="card text-center" style="width: 18rem;">
-  					<img src="https://images.unsplash.com/photo-1553909489-cd47e0907980?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1225&q=80" class="card-img-top" alt="lancheira">
-  					<h5 class="card-header">Lanche Bottom</h5>
-  					<div class="card-body">
-    					<h2> R$<span class="hm-item-preco">901.00</span></h2>
-    					<p class="card-text">(Burger King)</p>
-    					<button class="btn btn-success" onclick="salvarDados(event);">COMPRAR</button>
-  					</div>
-				</div>
-		</div>
-
-		<div class="col-lg-3 col-sm-12">
-				<div class="card text-center" style="width: 18rem;">
-  					<img src="https://images.unsplash.com/photo-1546497247-c8755e0deb50?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1316&q=80" class="card-img-top" alt="lanche 3: o inimigo agora é outro">
-  					<h5 class="card-header">Lanche com lanche</h5>
-  					<div class="card-body">
-    					<h2> R$<span class="hm-item-preco">694.20</span></h2>
-    					<p class="card-text">(Sim)</p>
-    					<button class="btn btn-success" onclick="salvarDados(event);">COMPRAR</button>
-  					</div>
-				</div>
-		</div>
 		
-		<div class="col-lg-3 col-sm-12">
-			<div class="card text-center" style="width: 18rem;">
-				  <img src="https://images.unsplash.com/photo-1544982503-9f984c14501a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" class="card-img-top" alt="...">
-				  <h5 class="card-header">Subscribe to Pewdiepie</h5>
-				  <div class="card-body">
-					<h2> R$<span class="hm-item-preco">900.10</span></h2>
-					<p class="card-text">(T-Series)</p>
-					<button class="btn btn-success" onclick="salvarDados(event);">COMPRAR</button>
-				  </div>
+		<?php
+		$lanches = $_SESSION['lanches'];
+		foreach ($lanches as $lanche) {
+			//var_dump($lanche);
+			$lancheImg = $lanche['img'];
+			$lancheNome = $lanche['nomeLanche'];
+			$lancheR = $lanche['restaurante'];
+			$lanchePreco = $lanche['preco'];
+			$lancheID = $lanche['id'];
+			echo "
+			<div class='col-lg-3 col-sm-12'>
+					<div class='card text-center' style='width: 18rem;'>
+						<img src='$lancheImg' class='card-img-top' alt='lancheira'>
+						<h5 class='card-header'>$lancheNome</h5>
+						<div class='card-body'>
+							<h2> R$<span class='hm-item-preco'>$lanchePreco</span></h2>
+							<p class='card-text'>$lancheR</p>
+							<input type='hidden' value='$lancheID' id='lchID'>
+							<button class='btn btn-success' onclick='salvarDados(event);'>COMPRAR</button>
+						</div>
+					</div>
 			</div>
-		</div>
+			";
+		}	
+		?>
+		
 	</div>
 </section>
 
@@ -169,7 +172,7 @@ preferi colocar uma coisa assim na landing page do que entupir de card com image
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-<script src="./scripts/home.js"></script>
+<script src="../frontend/scripts/home.js"></script>
 </div>
 </body>
 </html>

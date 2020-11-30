@@ -13,8 +13,8 @@
       integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" type="text/css" href="./css/lp.css" />
-    <link rel="stylesheet" type="text/css" href="./css/cadastro.css" />
+    <link rel="stylesheet" type="text/css" href="../frontend/css/lp.css" />
+    <link rel="stylesheet" type="text/css" href="../frontend/css/cadastro.css" />
 
     <link
       rel="stylesheet"
@@ -32,7 +32,7 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
           <a class="navbar-brand" href="#"
             ><span
-              ><img src="./icons/001-pizza.svg" alt="logo da marca"
+              ><img src="../frontend/icons/001-pizza.svg" alt="logo da marca"
             /></span>
             AnhembiEats</a
           >
@@ -53,25 +53,25 @@
           >
             <ul class="navbar-nav">
               <!-- <li class="nav-item">
-        <a class="nav-link" href="./carrinho.html">
+        <a class="nav-link" href="./carrinho.php">
 			<span><img src="./icons/003-carrinho.svg" alt="Carrinho de compras"></span>
 			Carrinho </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="./historico.html">
+        <a class="nav-link" href="./historico.php">
 			<span><img src="./icons/001-pizza.svg" alt="Histórico de compras"></span>
 			Histórico</a>
       </li> -->
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a class="nav-link" href="https://sou.anhembi.br/dashboard">
                   <span
                     ><img
-                      src="./icons/001-anhembi-logo.svg"
+                      src="../frontend/icons/001-anhembi-logo.svg"
                       alt="logo da marca"
                   /></span>
                   Sair</a
                 >
-              </li>
+              </li> -->
             </ul>
           </div>
         </nav>
@@ -82,17 +82,17 @@
       <div class="jumbotron">
         <h1 class="display-4">
           <span id="cad-img-span"
-            ><img src="./icons/001-pizza.svg" alt="logomarca"
+            ><img src="../frontend/icons/001-pizza.svg" alt="logomarca"
           /></span>
           Cadastre-se no AnhembiEats!
         </h1>
         <p class="lead">
           Preencha os campos abaixo para completar seu cadastro.
         </p>
-        <p id="cd-login">Já é cadastrado? Então <a href="./login.html">clique aqui!</a> </p>
+        <p id="cd-login">Já é cadastrado? Então <a href="../login.php">clique aqui!</a> </p>
         <hr class="my-4" />
         <div class="container">
-          <form action="">
+          <form action="../backend/controle/controlador-cd.php" method="POST">
             <div class="row">
               <div class="col-6-lg">
                 <label for="nome">Nome:</label>
@@ -149,7 +149,7 @@
             <div class="row">
               
               <div class="col-4">
-                <button type="submit" class="btn btn-success">
+                <button type="submit" class="btn btn-success" name="cd-btn">
                   Cadastre-se!
                 </button>
               </div>

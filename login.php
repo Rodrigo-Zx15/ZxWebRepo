@@ -13,8 +13,8 @@
       integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" type="text/css" href="./css/lp.css" />
-    <link rel="stylesheet" type="text/css" href="./css/cadastro.css" />
+    <link rel="stylesheet" type="text/css" href="./frontend/css/lp.css" />
+    <link rel="stylesheet" type="text/css" href="./frontend/css/cadastro.css" />
 
     <link
       rel="stylesheet"
@@ -32,7 +32,7 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
           <a class="navbar-brand" href="#"
             ><span
-              ><img src="./icons/001-pizza.svg" alt="logo da marca"
+              ><img src="./frontend/icons/001-pizza.svg" alt="logo da marca"
             /></span>
             AnhembiEats</a
           >
@@ -53,25 +53,25 @@
           >
             <ul class="navbar-nav">
               <!-- <li class="nav-item">
-        <a class="nav-link" href="./carrinho.html">
+        <a class="nav-link" href="./carrinho.php">
 			<span><img src="./icons/003-carrinho.svg" alt="Carrinho de compras"></span>
 			Carrinho </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="./historico.html">
+        <a class="nav-link" href="./historico.php">
 			<span><img src="./icons/001-pizza.svg" alt="Histórico de compras"></span>
 			Histórico</a>
       </li> -->
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a class="nav-link" href="https://sou.anhembi.br/dashboard">
                   <span
                     ><img
-                      src="./icons/001-anhembi-logo.svg"
+                      src="./frontend/icons/001-anhembi-logo.svg"
                       alt="logo da marca"
                   /></span>
                   Sair</a
                 >
-              </li>
+              </li> -->
             </ul>
           </div>
         </nav>
@@ -82,27 +82,27 @@
       <div class="jumbotron">
         <h1 class="display-4">
           <span id="cad-img-span"
-            ><img src="./icons/001-pizza.svg" alt="logomarca"
+            ><img src="./frontend/icons/001-pizza.svg" alt="logomarca"
           /></span>
           Entre no AnhembiEats!
         </h1>
         <p class="lead">
           Preencha os campos abaixo para fazer login.
         </p>
-        <p id="cd-login">Ainda não é cadastrado? <a href="./cadastro.html">Clique aqui!</a> </p>
+        <p id="cd-login">Ainda não é cadastrado? <a href="./views/cadastro.php">Clique aqui!</a> </p>
         <hr class="my-4" />
         <div class="container">
-          <form action="">
+          <form action="./backend/controle/controlador-cd.php" method="POST">
 
 
             <div class="row">
               <div class="col-6-lg">
-                <label for="ra" id="ra">RA:</label>
+                <label for="lg-ra" id="ra">RA:</label>
               </div>
               <div class="col-6-lg">
                 <input
                   type="text"
-                  name="ra"
+                  name="lg-ra"
                   placeholder="21202251"
                   maxlength="8"
                   minlength="6"
@@ -113,12 +113,12 @@
 
             <div class="row">
                 <div class="col-6-lg">
-                  <label for="senha">Senha:</label>
+                  <label for="lg-senha">Senha:</label>
                 </div>
                 <div class="col-6-lg">
                   <input
                     type="password"
-                    name="senha"
+                    name="lg-senha"
                     placeholder="******"
                     minlength="5"
                     required
@@ -127,13 +127,13 @@
               </div>
               <div class="row">
                 <div class="col-6-lg">
-                  <label for="campus">Campus:</label>
+                  <label for="lg-campus">Campus:</label>
                 </div>
                 <div class="col-6-lg">
-                    <select name="campus0" id="lg-select">
-                        <option value="vo" selected required>Vila Olímpia</option>
-                        <option value="mo">Mooca</option>
-                        <option value="mb">Morumbi</option>
+                    <select name="lg-campus" id="lg-select">
+                        <option value="vila olimpia" selected required>Vila Olímpia</option>
+                        <option value="mooca">Mooca</option>
+                        <option value="morumbi">Morumbi</option>
                     </select>
                 </div>
               </div>
@@ -141,7 +141,7 @@
             <div class="row">
               
               <div class="col-4">
-                <button type="submit" class="btn btn-success btn-block">
+                <button type="submit" class="btn btn-success btn-block" name="lg-btn">
                   Entrar
                 </button>
               </div>

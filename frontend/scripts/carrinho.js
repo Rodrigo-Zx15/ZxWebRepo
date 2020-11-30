@@ -27,6 +27,7 @@ function carrinhoHandler(){
     });
     console.log(total);
     //total.innerHTML = soma;
+    total = total.toFixed(2);
     carrinhoTabela.querySelector('#tabela-total').innerHTML = total;
 }
 
@@ -70,18 +71,18 @@ carrinho.forEach(produto => {
     const tr = document.createElement('tr');
     tr.innerHTML = `
         <td>
-            <input type="hidden" class="carrinho-item-id" value="${produto.id}">
-            <input type="number" min="1" max ="9" class="carrinho-item-qnt" value="1">
+            <input type="hidden" class="carrinho-item-id" value="${produto.id}" name="item-id[]">
+            <input type="number" min="1" max ="9" class="carrinho-item-qnt" value="1" name="item-qt[]">
         </td>
         <td>
             ${produto.nome}
         </td>
-        <td class="carrinho-item-preco">
-            ${produto.preco}
+        <td>
+           R$<span class="carrinho-item-preco"> ${produto.preco} </span>
         </td>
         <td>
             <span onclick="deletarItem(event)">
-                <img src="./icons/002-red-x.svg" alt="deletar item"/>
+                <img src="../frontend/icons/002-red-x.svg" alt="deletar item"/>
             </span>
         </td>
     `;
