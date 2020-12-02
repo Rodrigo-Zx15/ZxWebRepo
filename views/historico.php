@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+<?php
+  //require_once '../backend/modelo/cliente.php';
+  session_start();
+?>
+
 	<meta charset="utf-8">
 	<title>AnhembiEats | Histórico</title>
 	<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"> 
@@ -9,11 +14,13 @@
     <link rel="stylesheet" href="../frontend/css/carrinho.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <?php 
-      //require_once '../backend/modelo/cliente.php';
-      session_start();
-      if(empty($_SESSION)){
-        echo "<script>alert('FAÇA LOGIN!');window.location = '../login.php';</script>";
-      }
+      //
+      
+      //existe um bug causado por essas linhas de codigo onde o alert aciona na pagina de login
+      //mas basta retornar e tentar logar de novo que o fluxo continua normalmente
+      // if(empty($_SESSION)){
+      //   echo "<script>alert('FAÇA LOGIN!');window.location = '../login.php';</script>";
+      // }
 	  ?>
 </head>
 <body>
@@ -75,46 +82,38 @@ nao faço ideia de como fazer o calculo de preço dinamicamente -->
             <thead>
               <tr>
                 <th scope="col">Data</th>
-                <th scope="col">Quant.</th>
                 <th scope="col">Item</th>
+                <th scope="col">Quant.</th>
                 <th scope="col">Valor pago</th>
+                <th scope="col">Pago em:</th>
                 
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="col">
-                    23/05/2001 23:03
-                </th>
-                <td>
-                      9
-                </td>
-                <td>Lanche Top</td>
-                <td>900</td>
-                
-              </tr>
-              <tr>
-                <th scope="col">
-                    23/05/2001 23:06
-                </th>
-                <td>
-                      3
-                </td>
-                <td>Subscribe to Pewdiepie</td>
-                <td>694,20</td>
-                
-              </tr>
-              <tr>
-                <th scope="col">
-                    23/05/2001 23:12
-                </th>
-                <td>
-                      5
-                </td>
-                <td>Lanche Bottom</td>
-                <td>901</td>
-                
-              </tr>
+ 
+              <?php
+              $compras = $_SESSION['historico'];
+              //var_dump($compras)
+              foreach($compras as $compra){
+                $hNome = $compra['nomeLanche'];
+                $hData = $compra['dataCompra'];
+                $hValor = $compra['valor'];
+                $hPag = $compra['metodoPagamento'];
+                $hQnt = $compra['quantidade'];
+                echo "
+                  <tr>
+                    <th scope='col'>
+                        $hData
+                    </th>
+                    <td>$hNome</td>
+                    <td>$hQnt</td>
+                    <td>$hValor</td>
+                    <td>$hPag</td>
+                    
+                  </tr>";
+                }
+              ?>
+
               
             </tbody>
           </table>

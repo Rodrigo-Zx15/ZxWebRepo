@@ -39,6 +39,9 @@
         function getNome(){
             return $this->nome;
         }
+        function setSenha($senha){
+            $this->senha = $senha;
+        }
     }
 
 ?>

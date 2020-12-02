@@ -2,11 +2,11 @@
 <html>
   <head>
   <?php 
-      include '../backend/modelo/cliente.php';
+      //include '../backend/modelo/cliente.php';
       session_start();
-      if(empty($_SESSION)){
-        echo "<script>alert('FAÇA LOGIN!');window.location = '../login.php';</script>";
-      }
+      // if(empty($_SESSION['cliente'])){
+      //   echo "<script>alert('FAÇA LOGIN!');window.location = '../login.php';</script>";
+      // }
 	  ?>
     <meta charset="utf-8" />
     <title>AnhembiEats | Carrinho</title>
@@ -160,7 +160,8 @@ o preço está sendo calculado dinamicamente -->
 
           <div class="row justify-content-center">
             <div class="col-12">
-              <button type="submit" class="btn btn-info" name="btn-comprar">
+              <script>function limpar(){localStorage.removeItem('carrinho');}</script>
+              <button type="submit" onclick='limpar();' class="btn btn-info" name="btn-comprar" >
                 Confirmar compra
               </button>
             </div>

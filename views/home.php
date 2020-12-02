@@ -6,7 +6,7 @@
 		session_start();
 		
 		
-		if(empty($_SESSION)){
+		if(empty($_SESSION['cliente'])){
 			echo "<script>alert('FAÇA LOGIN!');window.location = '../login.php';</script>";
 		}
 	?>

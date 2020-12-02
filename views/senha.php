@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>AnhembiEats | Bem-vindo!</title>
+    <title>AnhembiEats | Redefinir senha!</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,400;0,700;1,400&display=swap"
       rel="stylesheet"
@@ -66,7 +66,7 @@
                 <a class="nav-link" href="https://sou.anhembi.br/dashboard">
                   <span
                     ><img
-                      src="../frontend/icons/001-anhembi-logo.svg"
+                      src="./frontend/icons/001-anhembi-logo.svg"
                       alt="logo da marca"
                   /></span>
                   Sair</a
@@ -84,35 +84,25 @@
           <span id="cad-img-span"
             ><img src="../frontend/icons/001-pizza.svg" alt="logomarca"
           /></span>
-          Cadastre-se no AnhembiEats!
+          Entre no AnhembiEats!
         </h1>
-        <div style="justify-content: center;"> 
         <p class="lead">
-          Preencha os campos abaixo para completar seu cadastro.
+          Redefina sua senha abaixo!
         </p>
-        <p id="cd-login" style="text-align: center;";>Já é cadastrado? Então <a href="../login.php">clique aqui!</a> </p>
-        </div>
+        <p id="cd-login" style="text-align: center;">Ainda não é cadastrado? <a href="./views/cadastro.php">Clique aqui!</a> </p>
         <hr class="my-4" />
         <div class="container">
           <form action="../backend/controle/controlador-cd.php" method="POST">
-            <div class="row">
-              <div class="col-6-lg">
-                <label for="nome">Nome:</label>
-              </div>
-              <div class="col-6-lg">
-                <input type="text" name="nome" placeholder="Fulano D. Tal" 
-                required/>
-              </div>
-            </div>
+
 
             <div class="row">
               <div class="col-6-lg">
-                <label for="ra" id="ra">RA:</label>
+                <label for="sn-ra" id="ra">RA:</label>
               </div>
               <div class="col-6-lg">
                 <input
                   type="text"
-                  name="ra"
+                  name="sn-ra"
                   placeholder="21202251"
                   maxlength="8"
                   minlength="6"
@@ -123,36 +113,40 @@
 
             <div class="row">
               <div class="col-6-lg">
-                <label for="senha">Senha:</label>
+                <label for="sn-ra" id="ra">Nome:</label>
               </div>
               <div class="col-6-lg">
                 <input
-                  type="password"
-                  name="senha"
-                  placeholder="******"
-                  minlength="5"
+                  type="text"
+                  name="sn-nome"
+                  placeholder="Tal D. Fulano"
+
                   required
                 />
               </div>
             </div>
 
             <div class="row">
-              <div class="col-4-md rad-marg">
-                <label for="cd-radio-alun">Aluno</label>
-                <input type="radio" id="cd-radio-alun" name="usuario" value="aluno" checked>
+                <div class="col-6-lg">
+                  <label for="sn-senha">Nova senha:</label>
+                </div>
+                <div class="col-6-lg">
+                  <input
+                    type="password"
+                    name="sn-senha"
+                    placeholder="******"
+                    minlength="5"
+                    required
+                  />
+                </div>
+              </div>
 
-              </div>
-              <div class="col-4-md rad-marg">
-                <label for="cd-radio-prof">Professor</label>
-                <input type="radio" id="cd-radio-prof" name="usuario" value="professor">
-              </div>
-            </div>
 
             <div class="row">
               
-              <div class="col-4" style="margin-left: 10vw";>
-                <button type="submit" class="btn btn-success" name="cd-btn">
-                  Cadastre-se!
+              <div class="col-4">
+                <button type="submit" class="btn btn-success btn-block" name="sn-btn">
+                  Alterar senha
                 </button>
               </div>
             </div>

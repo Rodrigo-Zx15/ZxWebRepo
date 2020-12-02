@@ -1,5 +1,7 @@
 //OBS:. Créditos ao meu amigo Pedro que me ajudou a melhorar
-
+function limpar(){
+    localStorage.removeItem('carrinho');
+}
 
 //----------------------//
 
@@ -91,7 +93,7 @@ carrinho.forEach(produto => {
     table.insertBefore(tr,tableTotal);
 
 });
-
+//deletando o carrinho após a compra ser efetuada
 
 carrinhoHandler();
 

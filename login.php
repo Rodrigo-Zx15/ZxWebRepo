@@ -89,7 +89,10 @@
         <p class="lead">
           Preencha os campos abaixo para fazer login.
         </p>
-        <p id="cd-login">Ainda não é cadastrado? <a href="./views/cadastro.php">Clique aqui!</a> </p>
+        <div id="fodase" style="text-align: center;">
+        <p class="cd-login">Ainda não é cadastrado? <a href="./views/cadastro.php">Clique aqui!</a> </p>
+        <p class="cd-login"><a href="./views/senha.php"> Esqueci minha senha.</a></p>
+        </div>
         <hr class="my-4" />
         <div class="container">
           <form action="./backend/controle/controlador-cd.php" method="POST">
